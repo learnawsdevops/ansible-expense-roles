@@ -1,0 +1,8 @@
+- name: Get tasks from common and setup nodejs
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs
+- name: "copy {{component}} service file"
+  ansible.builtin.copy:
+    src: backend.service
+    dest: /etc/systemd/system/backend.service
