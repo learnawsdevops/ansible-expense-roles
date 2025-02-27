@@ -1,0 +1,1 @@
+### i hadnt given username , password in ansible.cfg still it's able to connect with configurable instances , need to check on this, still templates needs to used in my roles
