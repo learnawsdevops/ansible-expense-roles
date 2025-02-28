@@ -1,0 +1,22 @@
+- name: Download backend code
+  ansible.builtin.get_url:
+    url: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-{{version}}.zip"
+    dest: /tmp/backend.zip
+  tags: deployment
+- name: Unarchive a file that is already on the remote machine
+  ansible.builtin.unarchive:
+    src: /tmp/backend.zip
+    dest: /app
+    remote_src: yes
+  tags: deployment
+- name: install dependencies
+  ansible.builtin.command: npm install
+  args:
+    chdir: /app
+  tags: deployment
+- name: Enable backend service and start the service
+  ansible.builtin.service:
+    name: backend
+    state: started
+    enabled: yes
+  tags: deployment
