@@ -10,3 +10,7 @@
   ansible.builtin.import_role:
     name: common
     tasks_from: mysql
+- name: Deploy the latest code
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: deployment
